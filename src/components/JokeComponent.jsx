@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
+import Loader from "./Loader";
 
 function JokeComponent() {
-  const [joke, setJoke] = useState(null);
+  const [joke, setJoke] = useState("");
+  const [loader, setLoader] = useState(false);
 
-  const FetchJoke = async () => {
-    try {
-      const res = await fetch("https://teehee.dev/api/joke");
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      const data = await res.json();
-      console.log("API response:", data);
-      setJoke(data.joke || data.text || "No joke found.");
-    } catch (error) {
-      console.error("Error fetching joke:", error);
-      setJoke("Failed to load joke. Please try again later.");
-    }
-  };
+const generateJoke = () => {
+  setLoader(true);
+  fetch("https://teehee.dev/api/joke").then((res) => res.json()).then((res) =>
+    setJoke(res.value)).finally(() => {
+      setLoader(false)
+});
+}
 
   useEffect(() => {
-    FetchJoke();
+    generateJoke();
   }, []);
 
   return (
@@ -29,10 +26,10 @@ function JokeComponent() {
         <p>Loading...</p>
       )}
       <button
-        onClick={FetchJoke}
+        onClick={generateJoke}
         className="bg-white text-black rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-200" 
       >
-        New Joke
+        {loader?<Loader />: "Generate Joke"}
       </button>
     </div>
   );
