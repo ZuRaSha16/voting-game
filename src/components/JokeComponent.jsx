@@ -6,15 +6,13 @@ function JokeComponent() {
   const FetchJoke = async () => {
     try {
       const res = await fetch("https://teehee.dev/api/joke");
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
       console.log("API response:", data);
-      if (data && data.joke) {
-        setJoke(data.joke);
-      } else {
-        console.error("Unexpected API response structure:", data);
-      }
+      setJoke(data.joke || data.text || "No joke found.");
     } catch (error) {
       console.error("Error fetching joke:", error);
+      setJoke("Failed to load joke. Please try again later.");
     }
   };
 
@@ -32,7 +30,7 @@ function JokeComponent() {
       )}
       <button
         onClick={FetchJoke}
-        className="bg-white text-black rounded-sm p-2 mt-4"
+        className="bg-white text-black rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-200" 
       >
         New Joke
       </button>
