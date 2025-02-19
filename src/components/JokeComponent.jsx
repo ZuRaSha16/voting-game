@@ -30,7 +30,7 @@ function JokeComponent() {
 
   return (
     <div className="text-center w-96 h-auto p-8 bg-white rounded-lg my-40 mx-auto text-black">
-      <h1 className="text-2xl">Get a new joke 😂</h1>
+      <h1 className="text-2xl border-2 rounded-lg p-3 bg-gray-800 text-white">Get a new joke 😂</h1>
       {joke ? (
         <p className="text-lg">{joke}</p>
       ) : (
@@ -52,7 +52,7 @@ function JokeComponent() {
       </div>
       <button
         onClick={generateJoke}
-        className="bg-gray-900 text-white rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-700 transition duration-200"
+        className="bg-gray-800 text-white rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-700 transition duration-200"
       >
         {loader ? <Loader /> : "Generate Joke"}
       </button>
