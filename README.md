@@ -5,7 +5,7 @@ Laugh, vote, repeat! Voting Game is a fun and interactive web app that delivers 
 How It Works <br>
 ✅ Get a random joke in a Q&A format <br>
 👍 React with emojis to vote <br>
-➡️ Hit "Next Joke" to see another one <br>
+➡️ Hit "Generate Joke" to see another one <br>
 📊 Watch votes update in real-time <br>
 
 Enjoy and Have Fun Laughing😂!
