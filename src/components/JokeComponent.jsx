@@ -4,14 +4,25 @@ import Loader from "./Loader";
 function JokeComponent() {
   const [joke, setJoke] = useState("");
   const [loader, setLoader] = useState(false);
+  const [upvotes, setUpvotes] = useState(0);
+  const [downvotes, setDownvotes] = useState(0);
 
-const generateJoke = () => {
-  setLoader(true);
-  fetch("https://api.chucknorris.io/jokes/random").then((res) => res.json()).then((res) =>
-    setJoke(res.value)).finally(() => {
-      setLoader(false)
-});
-}
+  const generateJoke = async () => {
+    setLoader(true);
+    setUpvotes(0);
+    setDownvotes(0);
+    try {
+      const res = await fetch("https://api.chucknorris.io/jokes/random");
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      setJoke(data.value);
+    } catch (error) {
+      console.error("Error fetching joke:", error);
+      setJoke(`Failed to load joke. Please try again later. Error: ${error.message}`);
+    } finally {
+      setLoader(false);
+    }
+  };
 
   useEffect(() => {
     generateJoke();
@@ -25,11 +36,25 @@ const generateJoke = () => {
       ) : (
         <p>Loading...</p>
       )}
+      <div className="flex justify-center space-x-4 my-4">
+        <button
+          onClick={() => setUpvotes(upvotes + 1)}
+          className="text-2xl hover:cursor-pointer"
+        >
+          👍 {upvotes}
+        </button>
+        <button
+          onClick={() => setDownvotes(downvotes + 1)}
+          className="text-2xl hover:cursor-pointer"
+        >
+          👎 {downvotes}
+        </button>
+      </div>
       <button
         onClick={generateJoke}
-        className="bg-gray-800 text-white rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-700" 
+        className="bg-gray-900 text-white rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-700 transition duration-200"
       >
-        {loader?<Loader />: "Generate Joke"}
+        {loader ? <Loader /> : "Generate Joke"}
       </button>
     </div>
   );
