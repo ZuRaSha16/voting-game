@@ -1,8 +1,11 @@
-# React + Vite
+# Voting Game: The Ultimate Joke!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Laugh, vote, repeat! Voting Game is a fun and interactive web app that delivers fresh jokes daily and lets users react with emoji votes. Whether you love a classic dad joke or a witty one-liner, you decide which jokes are the funniest!
 
-Currently, two official plugins are available:
+#How It Works
+✅ Get a random joke in a Q&A format
+👍 React with emojis to vote
+➡️ Hit "Next Joke" to see another one
+📊 Watch votes update in real-time
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Enjoy and Have Fun Laughing😂!
