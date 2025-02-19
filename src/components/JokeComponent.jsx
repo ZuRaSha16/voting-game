@@ -5,13 +5,24 @@ function JokeComponent() {
   const [joke, setJoke] = useState("");
   const [loader, setLoader] = useState(false);
 
-const generateJoke = () => {
-  setLoader(true);
-  fetch("https://teehee.dev/api/joke").then((res) => res.json()).then((res) =>
-    setJoke(res.value)).finally(() => {
-      setLoader(false)
-});
-}
+  const generateJoke = async () => {
+    setLoader(true);
+    try {
+      const res = await fetch("https://teehee.dev/api/joke");
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      if (data.joke) {
+        setJoke(data.joke);
+      } else {
+        setJoke("No joke found.");
+      }
+    } catch (error) {
+      console.error("Error fetching joke:", error);
+      setJoke(`Failed to load joke. Please try again later. Error: ${error.message}`);
+    } finally {
+      setLoader(false);
+    }
+  };
 
   useEffect(() => {
     generateJoke();
@@ -27,9 +38,9 @@ const generateJoke = () => {
       )}
       <button
         onClick={generateJoke}
-        className="bg-white text-black rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-200" 
+        className="bg-white text-black rounded-sm p-2 mt-4 hover:cursor-pointer hover:bg-gray-200"
       >
-        {loader?<Loader />: "Generate Joke"}
+        {loader ? <Loader /> : "Generate Joke"}
       </button>
     </div>
   );
