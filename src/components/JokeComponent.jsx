@@ -12,7 +12,7 @@ function JokeComponent() {
     setUpvotes(0);
     setDownvotes(0);
     try {
-      const res = await fetch("https://api.chucknorris.io/jokes/random");
+      const res = await fetch("https://teehee.dev/api/joke");
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
       setJoke(data.value);
