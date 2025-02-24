@@ -59,18 +59,16 @@ function JokeReactions() {
           Add Emoji
         </button>
         {showEmojiPicker && (
-          <div className="fixed sm:absolute left-1/2 bottom-0 sm:bottom-auto sm:top-full transform -translate-x-1/2 w-full sm:w-auto sm:mt-2 p-4 bg-white rounded-lg shadow-xl border z-10">
-            <div className="grid grid-cols-3 gap-4 mx-auto max-w-[280px]">
-              {suggestedEmojis.map(emoji => (
-                <button
-                  key={emoji}
-                  onClick={() => handleAddEmoji(emoji)}
-                  className="text-2xl w-14 h-14 hover:bg-gray-100 rounded transition-colors flex items-center justify-center aspect-square"
-                >
-                  {emoji}
-                </button>
-              ))}
-            </div>
+          <div className="fixed sm:absolute left-1/2 bottom-0 sm:bottom-auto sm:top-full transform -translate-x-1/2 w-full sm:w-auto sm:mt-2 p-4 bg-white rounded-lg shadow-xl border z-10 grid grid-cols-3 gap-4 min-w-[240px] max-w-[95vw] sm:max-w-none">
+            {suggestedEmojis.map(emoji => (
+              <button
+                key={emoji}
+                onClick={() => handleAddEmoji(emoji)}
+                className="text-2xl w-14 h-14 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+              >
+                {emoji}
+              </button>
+            ))}
           </div>
         )}
       </div>
