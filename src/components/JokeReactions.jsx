@@ -11,7 +11,7 @@ function JokeReactions() {
   });
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   
-  const suggestedEmojis = ["😊", "🤔", "😱", "🤣", "😍", "😇"];
+  const suggestedEmojis = ["😊", "😎", "🤔", "😱", "🤣", "😍", "🥳", "😴", "🤮", "😇"];
 
   useEffect(() => {
     localStorage.setItem("reactions", JSON.stringify(reactions));
