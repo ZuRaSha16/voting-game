@@ -4,14 +4,12 @@ function JokeReactions() {
   const [reactions, setReactions] = useState(() => {
     const saved = localStorage.getItem("reactions");
     return saved ? JSON.parse(saved) : {
-      "😂": 0,
-      "❤️": 0,
-      "😢": 0
+
     };
   });
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   
-  const suggestedEmojis = ["😊", "😎", "🤔", "😱", "🤣", "😍", "🥳", "😴", "🤮"];
+  const suggestedEmojis = ["😂", "❤️", "😭","😎", "🤔", "😨", "😍", "😴", "🤮"];
   
   useEffect(() => {
     localStorage.setItem("reactions", JSON.stringify(reactions));
