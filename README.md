@@ -8,6 +8,6 @@ How It Works <br>
 ➡️ Hit "Generate Joke" to see another one <br>
 📊 Watch votes update in real-time <br>
 
-Link: https://voting-game.netlify.app/
+Link: https://jokenator-game.netlify.app/
 
 Enjoy and Have Fun Laughing😂!
