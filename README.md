@@ -1,4 +1,4 @@
-#JokeNator: The Ultimate Voting Game!
+JokeNator: The Ultimate Voting Game!
 
 Laugh, vote, repeat! JokeNator is a fun and interactive web app that delivers fresh jokes daily and lets users react with emoji votes. Whether you love a classic dad joke or a witty one-liner, you decide which jokes are the funniest!
 
