@@ -64,7 +64,7 @@ function JokeReactions() {
           Add Emoji
         </button>
         {showEmojiPicker && (
-          <div className="absolute top-full mt-2 p-4 bg-white rounded-lg shadow-xl border z-10 grid grid-cols-5 gap-4 min-w-[280px]">
+          <div className="fixed sm:absolute left-1/2 bottom-0 sm:bottom-auto sm:top-full transform -translate-x-1/2 w-full sm:w-auto sm:mt-2 p-4 bg-white rounded-lg shadow-xl border z-10 grid grid-cols-5 gap-4 min-w-[280px] max-w-[95vw] sm:max-w-none">
             {suggestedEmojis.map(emoji => (
               <button
                 key={emoji}
