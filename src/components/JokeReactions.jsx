@@ -11,13 +11,12 @@ function JokeReactions() {
   });
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   
-  const suggestedEmojis = ["😊", "😎", "🤔", "😱", "🤣", "😍", "🥳", "😴", "🤮", "😇"];
-
+  const suggestedEmojis = ["😊", "😎", "🤔", "😱", "🤣", "😍", "🥳", "😴", "🤮"];
   
   useEffect(() => {
     localStorage.setItem("reactions", JSON.stringify(reactions));
   }, [reactions]);
-
+  
   const handleAddEmoji = (emoji) => {
     if (!reactions[emoji]) {
       setReactions(prev => ({
@@ -27,9 +26,7 @@ function JokeReactions() {
     }
     setShowEmojiPicker(false);
   };
-
-
-
+  
   return (
     <div className="flex flex-wrap justify-center items-center gap-4 my-6">
       {Object.entries(reactions).map(([emoji, count]) => (
@@ -59,17 +56,17 @@ function JokeReactions() {
       <div className="relative">
         <button
           onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-          className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
+          className="bg-gray-800 text-white rounded-lg px-4 py-2 mt-4 hover:cursor-pointer hover:bg-gray-700 transition-all duration-300 transform hover:scale-105"
         >
           Add Emoji
         </button>
         {showEmojiPicker && (
-          <div className="fixed sm:absolute left-1/2 bottom-0 sm:bottom-auto sm:top-full transform -translate-x-1/2 w-full sm:w-auto sm:mt-2 p-4 bg-white rounded-lg shadow-xl border z-10 grid grid-cols-5 gap-4 min-w-[280px] max-w-[95vw] sm:max-w-none">
+          <div className="fixed sm:absolute left-1/2 bottom-0 sm:bottom-auto sm:top-full transform -translate-x-1/2 w-full sm:w-auto sm:mt-2 p-4 bg-white rounded-lg shadow-xl border z-10 grid grid-cols-3 gap-4 min-w-[240px] max-w-[95vw] sm:max-w-none">
             {suggestedEmojis.map(emoji => (
               <button
                 key={emoji}
                 onClick={() => handleAddEmoji(emoji)}
-                className="text-2xl p-3 hover:bg-gray-100 rounded transition-colors"
+                className="text-2xl w-14 h-14 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
               >
                 {emoji}
               </button>

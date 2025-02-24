@@ -43,7 +43,7 @@ function JokeComponent() {
       <JokeReactions ref={reactionsRef} />
       <button
         onClick={generateJoke}
-        className="bg-gray-800 text-white rounded-lg px-6 py-3 mt-4 hover:cursor-pointer hover:bg-gray-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+        className="bg-gray-800 text-white rounded-lg px-6 py-3 mt-4 hover:cursor-pointer hover:bg-gray-700 transition-all duration-300 transform hover:scale-105"
       >
         {loader ? <Loader /> : "Generate Joke"}
       </button>
